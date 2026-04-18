@@ -504,9 +504,15 @@ static void run_multi_rhs_experiment(void) {
         print_rhs_table_row(n, k, "gauss_partial_pivot", 0.0, gauss_total, gauss_total,
                     gauss_total / (double)k, gauss_status);
 
-        printf("%zu,%zu,lu_factored,%d,%.6e,%.6e,%.6e,%.6e\n",
-               n, k, lu_status, decompose_time, lu_total, decompose_time + lu_total,
-               (decompose_time + lu_total) / (double)k);
+        print_rhs_table_row(n,
+                    k,
+                    "lu_factored",
+                    decompose_time,
+                    lu_total,
+                    decompose_time + lu_total,
+                    (decompose_time + lu_total) / (double)k,
+                    lu_status);
+
 
         matrix_destroy(a);
         free(l);
